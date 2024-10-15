@@ -1,6 +1,6 @@
 package com.taj.TajHotel.service;
 
-import com.taj.TajHotel.exception.CustomUserDetailsServiceExceptionHandler;
+import com.taj.TajHotel.exception.CustomExceptionHandler;
 import com.taj.TajHotel.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
