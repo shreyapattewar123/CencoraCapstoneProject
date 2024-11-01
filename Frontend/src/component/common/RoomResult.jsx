@@ -11,10 +11,16 @@ const RoomResult = ({ roomSearchResults }) => {
                 <div className="room-list">
                     {roomSearchResults.map(room => (
                         <div key={room.id} className="room-list-item">
-                            <img className='room-list-item-image' src={room.roomPhoto} alt={room.roomType} />
+                            {room.roomPhoto&& (
+                            <img
+                                src={`data:image/jpeg;base64,${room.roomPhoto}`}
+                                alt={room.roomType}
+                                style={{ width: '200px', height: '150px' }}
+                            />
+                        )}
                             <div className="room-details">
                                 <h3>{room.roomType}</h3>
-                                <p>Price: ₹{room.roomPrice} / night</p>
+                                <p>Price: ₹{room.roomPrice}</p>
                                 <p>Description: {room.roomDescription}</p>
                             </div>
 
@@ -31,7 +37,7 @@ const RoomResult = ({ roomSearchResults }) => {
                                         className="book-now-button"
                                         onClick={() => navigate(`/room-details-book/${room.id}`)} // Navigate to book room with room ID
                                     >
-                                        View/Book Now
+                                        View / Book Now
                                     </button>
                                 )}
                             </div>

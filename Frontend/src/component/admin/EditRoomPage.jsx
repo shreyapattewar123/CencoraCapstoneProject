@@ -5,6 +5,7 @@ import ApiService from '../../service/ApiService';
 const EditRoomPage = () => {
     const { roomId } = useParams();
     const navigate = useNavigate();
+    const [initialRoomDetails, setInitialRoomDetails] = useState(null);
     const [roomDetails, setRoomDetails] = useState({
         roomPhotoUrl: '',
         roomType: '',
@@ -98,9 +99,21 @@ const EditRoomPage = () => {
             }
         }
     };
+    //new code for the diable button
+    const hasChanges = () => {
+        if (!initialRoomDetails) return false;
+        return (
+            initialRoomDetails.roomPhotoUrl !== roomDetails.roomPhotoUrl ||
+            initialRoomDetails.roomType !== roomDetails.roomType ||
+            initialRoomDetails.roomPrice !== roomDetails.roomPrice ||
+            initialRoomDetails.roomDescription !== roomDetails.roomDescription ||
+            file !== null
+        );
+    };
 
     return (
         <div className="edit-room-container">
+            
             <h2>Edit Room</h2>
             {error && <p className="error-message">{error}</p>}
             {success && <p className="success-message">{success}</p>}
@@ -145,7 +158,8 @@ const EditRoomPage = () => {
                         onChange={handleChange}
                     ></textarea>
                 </div>
-                <button className="update-button" onClick={handleUpdate}>Update Room</button>
+                <button className="update-button" onClick={handleUpdate} 
+                >Update Room</button>
                 <button className="delete-button" onClick={handleDelete}>Delete Room</button>
             </div>
         </div>

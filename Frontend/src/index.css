@@ -24,7 +24,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 25px 70px 25px 75px;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   font-family: Arial, sans-serif;
   font-size: 20px;
@@ -199,8 +199,8 @@ button[type="submit"]:hover {
 /* The header banner */
 .header-banner {
   /* background-image: url("../public/assets/images/hotel.webp"); */
-  width: 1600px;
-  height: 80vh;
+  /* width: 1600px;
+  height: 80vh; */
    motion: none;
   background-size: cover;
   background-position: center;
@@ -549,13 +549,13 @@ button[type="submit"]:hover {
   height: auto;
 }
 
-.room-details-info {
+/* .room-details-info {
   margin-top: 20px;
-}
+} */
 
-.booking-info {
+/* .booking-info {
   margin-top: 20px;
-}
+} */
 
 .booking-list {
   list-style-type: none;
@@ -661,8 +661,13 @@ button[type="submit"]:hover {
 /*FIND BOOKING PAGE */
 .find-booking-page {
   max-width: 50%;
+  
+  
+  background-size: cover;
+  background-position: center;
   margin: 10px auto 60px auto;
   padding: 20px;
+     
 }
 
 
@@ -862,6 +867,13 @@ p {
 .update-button:hover,
 .delete-button:hover {
   opacity: 0.8;
+}
+
+.update-button:disabled {
+  background-color: #c3c3c3;
+  color: #6c757d;
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 
 /*B0oking & manage booking styling*/
@@ -1145,6 +1157,8 @@ h2 {
   .header-banner h1 {
       font-size: 20px;
   }
+/* new css start */
+
 
   .search-field {
       flex: 0 0 calc(100% - 20px);
@@ -1184,6 +1198,8 @@ h2 {
 
   .navbar {
       padding: 5px 10px 5px 10px;
+      background-color: #5e92c7;
+
   }
 
   .navbar-ul {
@@ -1196,10 +1212,368 @@ h2 {
       margin-left: 0;
       margin-bottom: 10px;
       text-align: center;
+
   }
 
   .navbar-ul li a {
       display: block;
+
   }
 
+}
+
+/* FindBookingPage.css */
+
+.find-booking-page1 {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.find-booking-page1 h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #007F86;
+}
+
+.search-container1 {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.search-container1 input {
+  width: 70%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.search-container1 button {
+  padding: 0.5rem 1rem;
+  background-color: #007F86;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+} 
+
+.search-container1 button:hover {
+  background-color: #0056b3;
+} 
+
+.error-message1 {
+  color: red;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.booking-details1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.booking-details1 h3 {
+  grid-column: span 3; /* Ensure headings span all columns */
+  margin-bottom: 0.5rem;
+  color: #007F86;
+  
+}
+
+.booking-details1 > div {
+  background-color: #f0f0f0;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.booking-details1 p {
+  margin: 0.5rem 0;
+}
+
+.booking-details1 img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+hr {
+  grid-column: span 3;
+  border: none;
+  border-top: 1px solid #ddd;
+}
+
+/* RoomDetailsPage.css */
+
+.room-details-booking {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* max-width: 800px; */
+  margin: 2rem auto;
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.room-details-booking h2 {
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  color: #007F86;;
+}
+
+.room-details-booking h3 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: #007F86;
+}
+
+.room-details-booking img {
+  display: block;
+  margin: 0 auto 1rem;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+}
+
+.room-details-info,
+.booking-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.room-details-info p {
+  margin: 0.5rem 0;
+  color: #555;
+}
+
+.booking-success-message, .error-message, .modal-error-message, .modal-success-message {
+  text-align: center;
+  padding: 1rem;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.booking-success-message, .modal-success-message {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.error-message, .modal-error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.book-now-button, .go-back-button, .confirm-booking, .accept-booking {
+  display: flex;
+  padding: 0.75rem 1.5rem;
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  color: #fff;
+  background-color:  #007F86;;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.book-now-button:hover, .go-back-button:hover, .confirm-booking:hover, .accept-booking:hover {
+  background-color: #007F86;;
+}
+
+.go-back-button {
+  background-color: #6c757d;
+}
+
+.go-back-button:hover {
+  background-color: #5a6268;
+}
+
+.date-picker-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.detail-search-field {
+  margin: 0.5rem 0;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.guest-container1 {
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    width: 100%;
+    max-width: 350px;
+    flex-direction: row;
+}
+
+
+.guest-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.guest-div label {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.guest-div input {
+  width: 60px;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.confirm-booking {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #28a745;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.confirm-booking:hover {
+  background-color: #218838;
+}
+
+.accept-booking {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color:  #007F86;;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.accept-booking:hover {
+  background-color: #007F86;;
+}
+
+.total-price {
+  text-align: center;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.total-price p {
+  margin: 0.5rem 0;
+  color: #333;
+}
+
+.booking-info-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+.booking-info-container > div {
+  flex: 1;
+  padding: 1rem;
+}
+
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgba(0,0,0,0.4); 
+  padding-top: 60px;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; 
+  max-width: 500px; 
+  border-radius: 10px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  width: 100%;
+}
+.booking-button{
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    /* margin-top: 1rem; */
+    width: 50%;
+    max-width: 800px;
+    flex-direction: row;
+}
+
+.datepicker-css{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  /* margin-top: 1rem; */
+  width: 100%;
+  max-width: 350px;
+  flex-direction: row;
 }

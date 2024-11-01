@@ -26,7 +26,7 @@ const EditProfilePage = () => {
         }
         try {
             await ApiService.deleteUser(user.id);
-            navigate('/signup');
+            navigate('/register');
         } catch (error) {
             setError(error.message);
         }

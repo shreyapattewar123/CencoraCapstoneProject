@@ -58,7 +58,14 @@ const ProfilePage = () => {
                                 <p><strong>Check-out Date:</strong> {booking.checkOutDate}</p>
                                 <p><strong>Total Guests:</strong> {booking.totalNumOfGuest}</p>
                                 <p><strong>Room Type:</strong> {booking.room.roomType}</p>
-                                <img src={booking.room.roomPhotoUrl} alt="Room" className="room-photo" />
+                                
+                                {booking.room.roomPhoto&& (
+                            <img
+                                src={`data:image/jpeg;base64,${booking.room.roomPhoto}`}
+                                alt={booking.room.roomType}
+                                // style={{ width: '200px', height: '150px' }}
+                                className='room-photo' />
+                        )}
                             </div>
                         ))
                     ) : (

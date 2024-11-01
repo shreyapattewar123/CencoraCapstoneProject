@@ -20,18 +20,51 @@ function RegisterPage() {
         setFormData({ ...formData, [name]: value });
     };
 
+    const handleNameInput = (e) => {
+        const { value } = e.target;
+        if (/^[A-Za-z\s]*$/.test(value)) {
+            setFormData({ ...formData, name: value });
+        }
+    };
+
+    const handlePhoneNumberInput = (e) => {
+        const { value } = e.target;
+        if (/^\d*$/.test(value)) {
+            setFormData({ ...formData, phoneNumber: value });
+        }
+    };
+
     const validateForm = () => {
         const { name, email, password, phoneNumber } = formData;
-        if (!name || !email || !password || !phoneNumber) {
+
+        const namePattern = /^[A-Za-z\s]+$/; 
+        const emailPattern = /^[a-z0-9._%+-]+@gmail\.com$/;
+        const phonePattern = /^\d{10}$/;
+        // const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/; // Minimum 8 characters, at least one letter and one number
+
+        if (!name || !namePattern.test(name)) {
+            setErrorMessage('Name must contain only letters and spaces.');
             return false;
         }
+        if (!emailPattern.test(email)) {
+            setErrorMessage('Please enter a valid Gmail address.');
+            return false;
+        }
+        if (!phonePattern.test(phoneNumber)) {
+            setErrorMessage('Please enter a valid 10-digit phone number.');
+            return false;
+        }
+        // if (!passwordPattern.test(password)) {
+        //     setErrorMessage('Password must be at least 8 characters long and include at least one letter and one number.');
+        //     return false;
+        // }
+
         return true;
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!validateForm()) {
-            setErrorMessage('Please fill all the fields.');
             setTimeout(() => setErrorMessage(''), 5000);
             return;
         }
@@ -54,8 +87,7 @@ function RegisterPage() {
                     navigate('/login');
                 }, 3000);
             }
-        }
-         catch (error) {
+        } catch (error) {
             setErrorMessage(error.response?.data?.message || error.message);
             setTimeout(() => setErrorMessage(''), 5000);
         }
@@ -63,25 +95,51 @@ function RegisterPage() {
 
     return (
         <div className="auth-container">
-        {errorMessage && <p className="error-message">{errorMessage}</p>}
-        {successMessage && <p className="success-message">{successMessage}</p>}
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
+            {successMessage && <p className="success-message">{successMessage}</p>}
             <h2>Sign Up</h2>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <label>Name:</label>
-                    <input type="text" name="name" value={formData.name} onChange={handleInputChange} required />
+                    <label>*Name:</label>
+                    <input
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleNameInput}
+                        required
+                    />
                 </div>
                 <div className="form-group">
-                    <label>Email:</label>
-                    <input type="email" name="email" value={formData.email} onChange={handleInputChange} required />
+                    <label>*Email:</label>
+                    <input
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value.toLowerCase() })}
+                        required
+                    />
                 </div>
                 <div className="form-group">
-                    <label>Phone Number:</label>
-                    <input type="text" name="phoneNumber" value={formData.phoneNumber} onChange={handleInputChange} required />
+                    <label>*Phone Number:</label>
+                    <input
+                        type="text"
+                        name="phoneNumber"
+                        value={formData.phoneNumber}
+                        onChange={handlePhoneNumberInput}
+                        required
+                        pattern="\d*"
+                        title="Please enter a valid phone number"
+                    />
                 </div>
                 <div className="form-group">
-                    <label>Password:</label>
-                    <input type="password" name="password" value={formData.password} onChange={handleInputChange} required />
+                    <label>*Password:</label>
+                    <input
+                        type="password"
+                        name="password"
+                        value={formData.password}
+                        onChange={handleInputChange}
+                        required
+                    />
                 </div>
                 <button type="submit">Register</button>
             </form>

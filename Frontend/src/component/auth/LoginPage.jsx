@@ -21,6 +21,13 @@ function LoginPage() {
             return;
         }
 
+        const emailPattern = /^[a-z0-9._%+-]+@gmail\.com$/;
+        if (!emailPattern.test(email)) {
+            setError('Please enter a valid Gmail address.');
+            setTimeout(() => setError(''), 5000);
+            return;
+        }
+
         try {
             const response = await ApiService.loginUser({email, password});
             if (response.statusCode === 200) {
